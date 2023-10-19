@@ -5,8 +5,8 @@
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-70 col-lg-8">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">Popular Destinations</h1>
-		                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day.</p>
+		                        <h1 class="mb-10">Layanan terpopuler</h1>
+		                        <p>Layanan yang paling di minati pelanggan kami</p>
 		                    </div>
 		                </div>
 		            </div>						
@@ -15,7 +15,7 @@
 							<div class="single-destination relative">
 								<div class="thumb relative">
 									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="img/d1.jpg" alt="">
+									<img class="img-fluid" src="<?= base_url(); ?>assets/img/d1.jpg" alt="">
 								</div>
 								<div class="desc">	
 									<a href="#" class="price-btn">$150</a>			
@@ -28,7 +28,7 @@
 							<div class="single-destination relative">
 								<div class="thumb relative">
 									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="img/d2.jpg" alt="">
+									<img class="img-fluid" src="<?= base_url(); ?>assets/img/d2.jpg" alt="">
 								</div>
 								<div class="desc">	
 									<a href="#" class="price-btn">$250</a>			
@@ -41,7 +41,7 @@
 							<div class="single-destination relative">
 								<div class="thumb relative">
 									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="img/d3.jpg" alt="">
+									<img class="img-fluid" src="<?= base_url(); ?>assets/img/d3.jpg" alt="">
 								</div>
 								<div class="desc">	
 									<a href="#" class="price-btn">$350</a>			
@@ -62,8 +62,8 @@
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-70 col-lg-8">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">We Provide Affordable Prices</h1>
-		                        <p>Well educated, intellectual people, especially scientists at all times demonstrate considerably.</p>
+		                        <h1 class="mb-10">Kategori Layanan Kami</h1>
+		                        <p>Kami berikan layanan terbaik untuk pelanggan kami</p>
 		                    </div>
 		                </div>
 		            </div>						
@@ -173,8 +173,8 @@
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-70 col-lg-9">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">Other issues we can help you with</h1>
-		                        <p>We all live in an age that belongs to the young at heart. Life that is.</p>
+		                        <h1 class="mb-10">Gallery Kami</h1>
+		                       
 		                    </div>
 		                </div>
 		            </div>					
@@ -182,7 +182,7 @@
 						<div class="col-lg-3 col-md-6">
 							<div class="single-other-issue">
 								<div class="thumb">
-									<img class="img-fluid" src="img/o1.jpg" alt="">					
+									<img class="img-fluid" src="<?= base_url(); ?>assets/img/o1.jpg" alt="">					
 								</div>
 								<a href="#">
 									<h4>Rent a Car</h4>
@@ -195,7 +195,7 @@
 						<div class="col-lg-3 col-md-6">
 							<div class="single-other-issue">
 								<div class="thumb">
-									<img class="img-fluid" src="img/o2.jpg" alt="">					
+									<img class="img-fluid" src="<?= base_url(); ?>assets/img/o2.jpg" alt="">					
 								</div>
 								<a href="#">
 									<h4>Cruise Booking</h4>
@@ -208,7 +208,7 @@
 						<div class="col-lg-3 col-md-6">
 							<div class="single-other-issue">
 								<div class="thumb">
-									<img class="img-fluid" src="img/o3.jpg" alt="">					
+									<img class="img-fluid" src="<?= base_url(); ?>assets/img/o3.jpg" alt="">					
 								</div>
 								<a href="#">
 									<h4>To Do List</h4>
@@ -221,7 +221,7 @@
 						<div class="col-lg-3 col-md-6">
 							<div class="single-other-issue">
 								<div class="thumb">
-									<img class="img-fluid" src="img/o4.jpg" alt="">					
+									<img class="img-fluid" src="<?= base_url(); ?>assets/img/o4.jpg" alt="">					
 								</div>
 								<a href="#">
 									<h4>Food Features</h4>
@@ -243,8 +243,8 @@
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-70 col-lg-8">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">Testimonial from our Clients</h1>
-		                        <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall from </p>
+		                        <h1 class="mb-10">Testimoni Pelanggan Kami</h1>
+		                        <p>Apa kata pelanggan kami ?</p>
 		                    </div>
 		                </div>
 		            </div>
@@ -252,7 +252,7 @@
 		                <div class="active-testimonial">
 		                    <div class="single-testimonial item d-flex flex-row">
 		                        <div class="thumb">
-		                            <img class="img-fluid" src="img/elements/user1.png" alt="">
+		                            <img class="img-fluid" src="<?= base_url(); ?>assets/img/elements/user1.png" alt="">
 		                        </div>
 		                        <div class="desc">
 		                            <p>
@@ -270,7 +270,7 @@
 		                    </div>
 		                    <div class="single-testimonial item d-flex flex-row">
 		                        <div class="thumb">
-		                            <img class="img-fluid" src="img/elements/user2.png" alt="">
+		                            <img class="img-fluid" src="<?= base_url(); ?>assets/img/elements/user2.png" alt="">
 		                        </div>
 		                        <div class="desc">
 		                            <p>
@@ -288,7 +288,7 @@
 		                    </div>
 		                    <div class="single-testimonial item d-flex flex-row">
 		                        <div class="thumb">
-		                            <img class="img-fluid" src="img/elements/user1.png" alt="">
+		                            <img class="img-fluid" src="<?= base_url(); ?>assets/img/elements/user1.png" alt="">
 		                        </div>
 		                        <div class="desc">
 		                            <p>
@@ -306,7 +306,7 @@
 		                    </div>
 		                    <div class="single-testimonial item d-flex flex-row">
 		                        <div class="thumb">
-		                            <img class="img-fluid" src="img/elements/user2.png" alt="">
+		                            <img class="img-fluid" src="<?= base_url(); ?>assets/img/elements/user2.png" alt="">
 		                        </div>
 		                        <div class="desc">
 		                            <p>
@@ -324,7 +324,7 @@
 		                    </div>
 		                    <div class="single-testimonial item d-flex flex-row">
 		                        <div class="thumb">
-		                            <img class="img-fluid" src="img/elements/user1.png" alt="">
+		                            <img class="img-fluid" src="<?= base_url(); ?>assets/img/elements/user1.png" alt="">
 		                        </div>
 		                        <div class="desc">
 		                            <p>
@@ -342,7 +342,7 @@
 		                    </div>
 		                    <div class="single-testimonial item d-flex flex-row">
 		                        <div class="thumb">
-		                            <img class="img-fluid" src="img/elements/user2.png" alt="">
+		                            <img class="img-fluid" src="<?= base_url(); ?>assets/img/elements/user2.png" alt="">
 		                        </div>
 		                        <div class="desc">
 		                            <p>
