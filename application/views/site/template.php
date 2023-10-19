@@ -45,7 +45,7 @@
                           <li><a href="packages.html">Gallery</a></li>
                           <li><a href="hotels.html">Layanan Kami</a></li>
                                                                                             
-                          <li><a href="contact.html">Contact</a></li>
+                          <li><a href="contact.html">Kontak</a></li>
                           <li><a data-toggle="modal" data-target="#login" href="#">Login</a></li>
                         </ul>
                       </nav><!-- #nav-menu-container -->                                  
@@ -74,7 +74,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalFormTitle">Jelajahi LLDIKTI XI</h5>
+                    <h5 class="modal-title" id="exampleModalFormTitle">Login</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
