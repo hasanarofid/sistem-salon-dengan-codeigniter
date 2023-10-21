@@ -52,6 +52,8 @@ class Login extends CI_Controller
      
             if ($data_user->role == 1) {
                 $this->session->set_userdata('role', $data_user->role);
+                $this->session->set_userdata('id_pelanggan', $data_user->id_pelanggan);
+                $this->session->set_userdata('nama', $data_user->nama_pelanggan);
               
                 
                 redirect('user');

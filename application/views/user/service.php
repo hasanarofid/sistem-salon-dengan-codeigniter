@@ -51,7 +51,10 @@
 									
 										<li class="d-flex justify-content-between align-items-center">
 											<span></span>
-											<a href="#" class="price-btn">Booking</a>
+											<a href="javascript:;" class="price-btn"  data-toggle="modal" data-target="#edit"   
+          data-id="<?= $d->id_service ?>"
+          data-nama_service="<?= $d->nama_service ?>"
+          >Booking</a>
 										</li>													
 									</ul>
 								</div>
@@ -61,3 +64,58 @@
 					</div>
 				</div>	
 			</section>
+
+
+			<div class="modal" id="edit" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+
+<!-- Modal Header -->
+<div class="modal-header">
+<h4 class="modal-title">Booking</h4>
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<?php  
+echo validation_errors();                       
+echo form_open('user/booking'); ?>
+
+<!-- Modal body -->
+<div class="modal-body">
+<div class="mb-3">
+<input type="hidden" class="form-control"  name="id_service" id="id" required >
+    <label for="exampleInputEmail1">Nama Service</label>
+    <input type="text" class="form-control"   id="nama_service" readonly >
+    
+  </div>
+  <div class="mb-3">
+
+    <label for="exampleInputEmail1">Tanggal Booking</label>
+    <input type="date" class="form-control"  name="tgl_booking" required >
+    
+  </div>
+</div>
+
+<!-- Modal footer -->
+<div class="modal-footer">
+
+<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+<input type="submit" name="submit"  class="btn btn-info btn-pill" value="Submit">
+
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<script>
+$(document).ready(function() {
+
+$('#edit').on('show.bs.modal', function (event) {
+var div = $(event.relatedTarget)
+var modal   = $(this)
+modal.find('#id').attr("value",div.data('id'));
+modal.find('#nama_service').attr("value",div.data('nama_service'));
+
+});
+});
+</script>

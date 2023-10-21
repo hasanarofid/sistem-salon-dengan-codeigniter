@@ -51,7 +51,7 @@
 									
 										<li class="d-flex justify-content-between align-items-center">
 											<span></span>
-											<a href="#" class="price-btn">Booking</a>
+											<a href="<?= base_url('user'); ?>" class="price-btn">Booking</a>
 										</li>													
 									</ul>
 								</div>

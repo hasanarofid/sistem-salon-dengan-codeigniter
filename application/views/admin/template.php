@@ -36,7 +36,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
-                <div class="sidebar-brand-text mx-3"><img  src="<?= base_url();?>/asset/img/lldikti.png" alt="..." width="100%"></div>
+                <div class="sidebar-brand-text mx-3"><img  src="<?= base_url();?>/assets/img/logo.png" alt="..." width="100%"></div>
             </a>
 
             <!-- Divider -->
@@ -51,31 +51,56 @@
 
            
 
+<div class="modal fade" id="lapkeuangan" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Transaksi Keuangan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('admin/laporan_keuangan'); ?>
+                      
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#layanan"
-                    aria-expanded="true" aria-controls="layanan">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Layanan</span>
-                </a>
-                <div id="layanan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Data</h6>
-                        <a class="collapse-item" href="<?= base_url('admin/layanan_baru'); ?>">Pengajuan Layanan Baru</a>
-                        <a class="collapse-item" href="<?= base_url('admin/riwayat_layanan'); ?>">Riwayat Layanan</a>
-                       
-                    </div>
+                   
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                       <input type="date" class="form-control" name="dari">
+                        
+                      </div>
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                       <input type="date" class="form-control" name="sampai">
+                        
+                      </div>
+                     
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+                    <input type="submit" name="submit"  class="btn btn-primary btn-pill" value="Submit">
+                  </div>
+                  </form>
                 </div>
-            </li>
+              </div>
+            </div>
+            
 
  
-
+ <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/transaksi'); ?>">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Booking Service</span></a>
+            </li>
 
           
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#master"
                     aria-expanded="true" aria-controls="master">
-                    <i class="fas fa-fw fa-list"></i>
+                    <i class="fas fa-fw fa-folder"></i>
                     <span>Master Data</span>
                 </a>
                 <div id="master" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -93,13 +118,33 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/service'); ?>">
-                    <i class="fas fa-fw fa-users"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Service</span></a>
             </li>
              <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/pesan'); ?>">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Pesan</span></a>
+            </li>
+
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan"
+                    aria-expanded="true" aria-controls="laporan">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Laporan</span>
+                </a>
+                <div id="laporan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Data</h6>
+                        <a class="collapse-item" href="<?= base_url('admin/laporan_pelanggan'); ?>">Pelanggan</a>
+                        <a class="collapse-item" href="<?= base_url('admin/laporan_karyawan'); ?>">Karyawan</a>
+                        <a class="collapse-item" href="<?= base_url('admin/laporan_service'); ?>">Service</a>
+                        <a class="collapse-item"  href="#" data-toggle="modal" data-target="#lapkeuangan">Keuangan</a>
+
+                       
+                      
+                    </div>
+                </div>
             </li>
             
 

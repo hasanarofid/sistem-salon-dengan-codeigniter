@@ -144,14 +144,14 @@ echo form_open_multipart('admin/update_gallery'); ?>
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1">Keterangan</label>
-            <input type="text" class="form-control" name="durasi" value="<?= $f->ket; ?>" required>
+            <input type="text" class="form-control" name="ket" value="<?= $f->ket; ?>" required>
              <input type="hidden" class="form-control" name="old_file" value="<?= $f->file; ?>" required>
 
           </div>
  
              <div class="mb-3">
             <label for="exampleInputEmail1">File Foto</label>
-            <input type="file" class="form-control" name="file" required>
+            <input type="file" class="form-control" name="file" >
 
           </div>
   

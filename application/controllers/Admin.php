@@ -38,11 +38,37 @@ class Admin extends CI_Controller
        
         $data = array(
             'judul' => 'Dashboard',
+            'konfirmasi' => $this->m_umum->hitung_service('transaksi', 'status','0'),
+            'pembayaran' => $this->m_umum->hitung_service('transaksi', 'status','1'),
+            'kedatangan' => $this->m_umum->hitung_service('transaksi', 'status','2'),
+            'dikerjakan' => $this->m_umum->hitung_service('transaksi', 'status','3'),
+            'selesai' => $this->m_umum->hitung_service('transaksi', 'status','4'),
         );
         $this->template->load('admin/template', 'admin/home', $data);
     }
+function transaksi()
+    {
 
+        $data = array(
+            'judul' => 'Transaksi',
+            'dt_transaksi' => $this->m_umum->get_transaksi(),
+        );
+        $this->template->load('admin/template', 'admin/transaksi', $data);
+    }
+function update_transaksi()
+    {
 
+        $this->form_validation->set_rules('id_transaksi', 'id_transaksi', 'required');
+        $this->form_validation->set_rules('status', 'status', 'required');
+        if ($this->form_validation->run() === FALSE)
+            redirect('admin/transaksi');
+        else {
+            $this->m_umum->update_data("transaksi");
+            $notif = " Update Data Berhasil";
+            $this->session->set_flashdata('update', $notif);
+            redirect('admin/transaksi');
+        }
+    }
     function pesan()
     {
 
@@ -52,6 +78,7 @@ class Admin extends CI_Controller
         );
         $this->template->load('admin/template', 'admin/pesan', $data);
     }
+
       function delete_pesan($id)
     {
 
@@ -199,7 +226,7 @@ class Admin extends CI_Controller
             if (!empty($_FILES["file"]["name"])) {
                   $file = $this->uploadFile();
                 } else {
-                    $file = $old_template;
+                    $file = $old_file;
                 }
         $data_update = array(
              'nama_service' => $nama_service,
@@ -267,7 +294,7 @@ function gallery()
             if (!empty($_FILES["file"]["name"])) {
                   $file = $this->uploadFile();
                 } else {
-                    $file = $old_template;
+                    $file = $old_file;
                 }
         $data_update = array(
              'nama_gallery' => $nama_gallery,
@@ -382,6 +409,43 @@ function gallery()
         $this->session->set_flashdata('delete', $notif);
         redirect('admin/pelanggan');
     }
-    
+     function laporan_pelanggan()
+    {
+
+        $data = array(
+            'judul' => 'Data Pelanggan',
+            'dt_pelanggan' => $this->m_umum->get_data('pelanggan')
+        );
+        $this->load->view('laporan/pelanggan',$data);
+    }
+     function laporan_keuangan()
+    {
+         $dari = $this->input->post('dari');
+         $sampai = $this->input->post('sampai');
+
+        $data = array(
+            'judul' => 'Data Transaksi Keuangan',
+            'dt_transaksi' => $this->m_umum->get_transaksi_keuangan($dari,$sampai)
+        );
+        $this->load->view('laporan/transaksi',$data);
+    }
+    function laporan_karyawan()
+    {
+
+        $data = array(
+            'judul' => 'Data Karyawan',
+            'dt_karyawan' => $this->m_umum->get_data('karyawan')
+        );
+        $this->load->view('laporan/karyawan',$data);
+    }
+      function laporan_service()
+    {
+
+        $data = array(
+            'judul' => 'Data service',
+            'dt_service' => $this->m_umum->get_service()
+        );
+        $this->load->view('laporan/service',$data);
+    }
   
 }

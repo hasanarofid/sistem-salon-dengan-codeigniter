@@ -14,6 +14,7 @@ class Site extends CI_Controller{
   $data = array(
            'judul' => 'Booking Salon Online',
           'dt_gallery' => $this->m_umum->get_gallery(),
+          'dt_service' => $this->m_umum->get_service_site(),
           'dt_kategori' => $this->m_umum->get_kategori(),
           'dt_testimoni' => $this->m_umum->get_testimoni()
           

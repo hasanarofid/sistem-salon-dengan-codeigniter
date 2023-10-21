@@ -5,53 +5,31 @@
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-70 col-lg-8">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">Layanan terpopuler</h1>
+		                        <h1 class="mb-10">Layanan Kami</h1>
 		                        <p>Layanan yang paling di minati pelanggan kami</p>
 		                        <a href="<?= base_url('site/service'); ?>" class="primary-btn text-uppercase">Lihat Semua</a>
 		                    </div>
 		                </div>
 		            </div>						
 					<div class="row">
+						
+						 <?php
+            
+                foreach ($dt_service as $d):?>
 						<div class="col-lg-4">
 							<div class="single-destination relative">
 								<div class="thumb relative">
 									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="<?= base_url(); ?>assets/img/d1.jpg" alt="">
+									<img class="img-fluid" src="<?= base_url(); ?>upload/<?= $d->file; ?>" alt="">
 								</div>
 								<div class="desc">	
-									<a href="#" class="price-btn">$150</a>			
-									<h4>Mountain River</h4>
-									<p>Paraguay</p>			
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4">
-							<div class="single-destination relative">
-								<div class="thumb relative">
-									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="<?= base_url(); ?>assets/img/d2.jpg" alt="">
-								</div>
-								<div class="desc">	
-									<a href="#" class="price-btn">$250</a>			
-									<h4>Dream City</h4>
-									<p>Paris</p>			
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4">
-							<div class="single-destination relative">
-								<div class="thumb relative">
-									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="<?= base_url(); ?>assets/img/d3.jpg" alt="">
-								</div>
-								<div class="desc">	
-									<a href="#" class="price-btn">$350</a>			
-									<h4>Cloud Mountain</h4>
-									<p>Sri Lanka</p>			
+									<a href="#" class="price-btn">Rp. <?= $d->biaya; ?></a>			
+									<h4><?= $d->nama_service; ?></h4>
+									<p><?= $d->nama_kategori; ?></p>			
 								</div>
 							</div>
 						</div>		
-
+<?php endforeach; ?>
 					</div>
 					
 
