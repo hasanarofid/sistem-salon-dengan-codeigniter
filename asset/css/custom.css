@@ -1,0 +1,50 @@
+
+.sidebar .sidebar-brand {
+  height: 6.375rem; 
+}
+
+
+#gaya {
+	text-align:center;
+	perspective: 25px;
+}
+
+#koyo {  
+  transition: transform 0.5s; 
+}
+
+#image-preview{
+    display:none;
+    max-width : 400px; 
+}
+
+/* .wfh-bg {
+   background-image : linear-gradient(
+      rgba(50, 50, 190, 0.45), 
+      rgba(0, 90, 220, 0.45)
+    ), url("../img/wfh.jpg"); 
+  background-size: cover;
+}  */
+
+@media (min-width: 768px) { 
+
+.bg-login-image {
+  background: url("../img/pinandu_avatar.jpg");
+  background-position: center;
+  background-size: cover;
+}
+/* .wfh-bg {
+   background-image : linear-gradient(
+      rgba(50, 50, 190, 0.45), 
+      rgba(0, 90, 220, 0.45)
+    ), url("../img/wfh.jpg"); 
+  background-position: center;
+  background-size: cover;
+} */
+
+.bg-register-image {
+  background: url("../img/kilat.png");
+  background-position: center;
+  background-size: cover;
+}
+}

@@ -29,6 +29,7 @@
             <link rel="stylesheet" href="<?= base_url(); ?>assets/css/animate.min.css">
             <link rel="stylesheet" href="<?= base_url(); ?>assets/css/owl.carousel.css">             
             <link rel="stylesheet" href="<?= base_url(); ?>assets/css/main.css">
+             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
         </head>
         <body>  
             <header id="header">
@@ -36,16 +37,17 @@
                 <div class="container main-menu">
                     <div class="row align-items-center justify-content-between d-flex">
                       <div id="logo">
-                        <a href="index.html"><img src="<?= base_url(); ?>assets/img/logo.png" alt="" title="" /></a>
+                        <a href="index.html"><img src="<?= base_url(); ?>assets/img/" alt="" title="" /></a>
                       </div>
                       <nav id="nav-menu-container">
                         <ul class="nav-menu">
-                          <li><a href="index.html">Home</a></li>
-                          <li><a href="about.html">Tentang Kami</a></li>
-                          <li><a href="packages.html">Gallery</a></li>
-                          <li><a href="hotels.html">Layanan Kami</a></li>
+                          <li><a href="<?= base_url('site');?>">Home</a></li>
+                          <li><a href="<?= base_url('site/about');?>">Tentang Kami</a></li>
+                          <li><a href="<?= base_url('site/gallery');?>">Gallery</a></li>
+                          <li><a href="<?= base_url('site/service');?>">Layanan Kami</a></li>
                                                                                             
-                          <li><a href="contact.html">Kontak</a></li>
+                    
+                          <li><a data-toggle="modal" data-target="#register" href="#">Register</a></li>
                           <li><a data-toggle="modal" data-target="#login" href="#">Login</a></li>
                         </ul>
                       </nav><!-- #nav-menu-container -->                                  
@@ -64,7 +66,7 @@
                             <p class="text-white">
                                 Kami berikan pelayanan terbaik untuk anda
                             </p>
-                            <a href="#" class="primary-btn text-uppercase">Booking Sekarang</a>
+                            <a href="<?= base_url('site/service'); ?>" class="primary-btn text-uppercase">Booking Sekarang</a>
                         </div>
                         
                     </div>
@@ -79,9 +81,110 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                   xxx
+                  <?php  
+echo validation_errors();                       
+echo form_open('login/auth_action'); ?>
+
+<!-- Modal body -->
+<div class="modal-body">
+<div class="mb-3">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control"  name="username" required >
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1">Password</label>
+    <input type="password" class="form-control"  name="password" required >
+    
+  </div>
+  <div class="modal-footer">
+
+<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+<input type="submit" name="submit"  class="btn btn-info btn-pill" value="Login">
+
+</div>
+</div>
+
+                 
+                  </form>
+                </div>
+              </div>
+            </div>
+
+             <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
+                  <?php  
+echo validation_errors();                       
+echo form_open('site/register'); ?>
+
+<!-- Modal body -->
+<div class="modal-body">
+     <div class="mb-3">
+            <label for="exampleInputEmail1">Nama pelanggan</label>
+            <input type="text" class="form-control" name="nama_pelanggan" required>
+
+          </div>
+           <div class="mb-3">
+            <label for="exampleInputEmail1">JK</label>
+
+            <select class="form-control" name="jk">
+
+              <option>--Pilih JK--</option>
+
+              <option value="L">L</option>
+              <option value="P">P</option>
+              
+            </select>
+
+          </div>
+         
+          <div class="mb-3">
+            <label for="exampleInputEmail1">Tempat Lahir</label>
+            <input type="text" class="form-control" name="tempat_lahir" required>
+
+          </div>
+           <div class="mb-3">
+            <label for="exampleInputEmail1">Tgl Lahir</label>
+            <input type="date" class="form-control" name="tgl_lahir" required>
+
+          </div>
+
+           <div class="mb-3">
+            <label for="exampleInputEmail1">Alamat</label>
+            <input type="text" class="form-control" name="alamat" required>
+
+          </div>
+           <div class="mb-3">
+            <label for="exampleInputEmail1">No Telp</label>
+            <input type="text" class="form-control" name="no_telp" required>
+
+          </div>
+         
+<div class="mb-3">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control"  name="username" required >
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1">Password</label>
+    <input type="password" class="form-control"  name="password" required >
+    
+  </div>
+  <div class="modal-footer">
+
+<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+<input type="submit" name="submit"  class="btn btn-info btn-pill" value="Register">
+
+</div>
+</div>
+
                  
                   </form>
                 </div>
@@ -102,66 +205,14 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="single-footer-widget">
-                                <h6>Navigation Links</h6>
-                                <div class="row">
-                                    <div class="col">
-                                        <ul>
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Feature</a></li>
-                                            <li><a href="#">Services</a></li>
-                                            <li><a href="#">Portfolio</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col">
-                                        <ul>
-                                            <li><a href="#">Team</a></li>
-                                            <li><a href="#">Pricing</a></li>
-                                            <li><a href="#">Blog</a></li>
-                                            <li><a href="#">Contact</a></li>
-                                        </ul>
-                                    </div>                                      
-                                </div>                          
-                            </div>
-                        </div>                          
-                        <div class="col-lg-3  col-md-6 col-sm-6">
-                            <div class="single-footer-widget">
-                                <h6>Newsletter</h6>
-                                <p>
-                                    For business professionals caught between high OEM price and mediocre print and graphic output.                                 
-                                </p>                                
-                                <div id="mc_embed_signup">
-                                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
-                                        <div class="input-group d-flex flex-row">
-                                            <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                            <button class="btn bb-btn"><span class="lnr lnr-location"></span></button>      
-                                        </div>                                  
-                                        <div class="mt-10 info"></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3  col-md-6 col-sm-6">
-                            <div class="single-footer-widget mail-chimp">
-                                <h6 class="mb-20">InstaFeed</h6>
-                                <ul class="instafeed d-flex flex-wrap">
-                                    <li><img src="<?= base_url(); ?>assets/img/i1.jpg" alt=""></li>
-                                    <li><img src="<?= base_url(); ?>assets/img/i2.jpg" alt=""></li>
-                                    <li><img src="<?= base_url(); ?>assets/img/i3.jpg" alt=""></li>
-                                    <li><img src="<?= base_url(); ?>assets/img/i4.jpg" alt=""></li>
-                                    <li><img src="<?= base_url(); ?>assets/img/i5.jpg" alt=""></li>
-                                    <li><img src="<?= base_url(); ?>assets/img/i6.jpg" alt=""></li>
-                                    <li><img src="<?= base_url(); ?>assets/img/i7.jpg" alt=""></li>
-                                    <li><img src="<?= base_url(); ?>assets/img/i8.jpg" alt=""></li>
-                                </ul>
-                            </div>
-                        </div>                      
+                                                 
+                        
+                                          
                     </div>
 
                     <div class="row footer-bottom d-flex justify-content-between align-items-center">
                         <p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by xxxx
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         <div class="col-lg-4 col-sm-12 footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -188,5 +239,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             <script src="<?= base_url(); ?>assets/js/owl.carousel.min.js"></script>                          
             <script src="<?= base_url(); ?>assets/js/mail-script.js"></script>   
             <script src="<?= base_url(); ?>assets/js/main.js"></script>  
+             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+              <script type="text/javascript">
+        <?php if ($this->session->flashdata('success')) { ?>
+            toastr.success("<?php echo $this->session->flashdata('success'); ?>");
+        <?php } else if ($this->session->flashdata('delete')) {  ?>
+            toastr.error("<?php echo $this->session->flashdata('delete'); ?>");
+        <?php } else if ($this->session->flashdata('update')) {  ?>
+            toastr.info("<?php echo $this->session->flashdata('update'); ?>");
+        <?php } ?>
+    </script>
         </body>
     </html>

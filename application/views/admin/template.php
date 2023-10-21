@@ -9,21 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Pinandu</title>
+    <title>Admin</title>
 
     <!-- Custom fonts for this template-->
-    <link href="<?= base_url(); ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url(); ?>/asset/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url(); ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/asset/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/asset/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="<?= base_url(); ?>/assets/select2/css/select2.min.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>/assets/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    <script src="<?= base_url('') ?>assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url(); ?>/asset/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/asset/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <script src="<?= base_url('') ?>asset/vendor/apexcharts/apexcharts.min.js"></script>
 
 </head>
 
@@ -36,7 +36,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
-                <div class="sidebar-brand-text mx-3"><img  src="<?= base_url();?>/assets/img/lldikti.png" alt="..." width="100%"></div>
+                <div class="sidebar-brand-text mx-3"><img  src="<?= base_url();?>/asset/img/lldikti.png" alt="..." width="100%"></div>
             </a>
 
             <!-- Divider -->
@@ -81,66 +81,27 @@
                 <div id="master" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data</h6>
-                        <a class="collapse-item" href="<?= base_url('admin/pts'); ?>">PTS</a>
-                        <a class="collapse-item" href="<?= base_url('admin/pegawai'); ?>">Pegawai</a>
-                        <a class="collapse-item" href="<?= base_url('admin/bagian'); ?>">Bagian</a>
-                        <a class="collapse-item" href="<?= base_url('admin/status_dokumen'); ?>">Status Dokumen</a>
-                        <a class="collapse-item" href="<?= base_url('admin/status_layanan'); ?>">Status Layanan</a>
-                        <a class="collapse-item" href="<?= base_url('admin/hari_libur'); ?>">Hari Libur</a>
+                        <a class="collapse-item" href="<?= base_url('admin/kategori'); ?>">Kategori</a>
+                        <a class="collapse-item" href="<?= base_url('admin/karyawan'); ?>">Karyawan</a>
+                        <a class="collapse-item" href="<?= base_url('admin/pelanggan'); ?>">Pelanggan</a>
+                        <a class="collapse-item" href="<?= base_url('admin/gallery'); ?>">Gallery</a>
+                        <a class="collapse-item" href="<?= base_url('admin/testimoni'); ?>">Testimoni</a>
+                      
                     </div>
                 </div>
             </li>
 
-           
-
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Standar Pelayanan</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Data</h6>
-                        <a class="collapse-item" href="<?= base_url('admin/sp'); ?>">Standar Pelayanan</a>
-                        <a class="collapse-item" href="<?= base_url('admin/syarat'); ?>">Syarat</a>
-                        <a class="collapse-item" href="<?= base_url('admin/detail_sp'); ?>">Detail SP</a>
-                    </div>
-                </div>
-            </li>
-
-
-         
-
- 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#akun"
-                    aria-expanded="true" aria-controls="akun">
-
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Akun</span>
-                </a>
-                <div id="akun" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Data</h6>
-                        <a class="collapse-item" href="<?= base_url('admin/pengguna'); ?>">Akun Pegawai</a>
-                        <a class="collapse-item" href="<?= base_url('admin/pengguna_pt'); ?>">Akun Perguruan Tinggi</a>
-                        <a class="collapse-item" href="<?= base_url('admin/aplikasi'); ?>">Aplikasi</a>
-                        <a class="collapse-item" href="<?= base_url('admin/role'); ?>">Role</a>
-                    </div>
-                </div>
-            </li>
-
-             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/pendaftar'); ?>">
+                <a class="nav-link" href="<?= base_url('admin/service'); ?>">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Pendaftar</span></a>
+                    <span>Service</span></a>
             </li>
              <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/kritiksaran'); ?>">
-                    <i class="fas fa-fw fa-edit"></i>
-                    <span>Kritik, Saran dan Masukan</span></a>
+                <a class="nav-link" href="<?= base_url('admin/pesan'); ?>">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <span>Pesan</span></a>
             </li>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -186,7 +147,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle" src="<?= base_url(); ?>assets/img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="<?= base_url(); ?>asset/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -253,27 +214,27 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url(); ?>/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url(); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url(); ?>/asset/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url(); ?>/asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url(); ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= base_url(); ?>/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url(); ?>/assets/js/sb-admin-2.min.js"></script>
-    <script src="<?= base_url(); ?>/assets/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url(); ?>/asset/js/sb-admin-2.min.js"></script>
+    <script src="<?= base_url(); ?>/asset/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url(); ?>/asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<?= base_url(); ?>/assets/js/demo/datatables-demo.js"></script>
+    <script src="<?= base_url(); ?>/asset/js/demo/datatables-demo.js"></script>
     <!-- Page level plugins -->
-    <script src="<?= base_url(); ?>/assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="<?= base_url(); ?>/asset/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<?= base_url(); ?>/assets/js/demo/chart-area-demo.js"></script>
-    <script src="<?= base_url(); ?>/assets/js/demo/chart-pie-demo.js"></script>
+    <script src="<?= base_url(); ?>/asset/js/demo/chart-area-demo.js"></script>
+    <script src="<?= base_url(); ?>/asset/js/demo/chart-pie-demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script src="<?= base_url(); ?>/assets/select2/js/select2.full.min.js"></script>
+    <script src="<?= base_url(); ?>/asset/select2/js/select2.full.min.js"></script>
     <script>
         $(function() {
 
