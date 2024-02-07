@@ -8,6 +8,13 @@ class M_umum extends CI_model
 		$query = $this->db->get($tabel);
 		return $query->result();
 	}
+	function get_booking($tgl_booking)
+
+		 {
+			$query=$this->db->query("select * from transaksi where tgl_booking='$tgl_booking' ");
+			return $query;
+	 
+		 }
 
 	function ambil_data($tabel, $kolom = FALSE, $id = FALSE)
 	{

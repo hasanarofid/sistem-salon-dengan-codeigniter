@@ -12,7 +12,7 @@
 				</div>
 			</section>
 			<!-- End banner Area -->	
-
+   
 			<!-- Start about-info Area -->
 			<section class="about-info-area section-gap">
 				<div class="container">
@@ -48,7 +48,7 @@
                   <td><?= $d->nama_service; ?></td>
                   <td><?= $d->biaya; ?></td>
                   <td><?= $d->durasi; ?></td>
-                  <td><?php if($d->file!=NULL):?><a href="<?= base_url();?>upload/<?= $d->bukti;?>"><i class="fa fa-file"></i></a><?php endif; ?></td>
+                  <td><?php if($d->bukti!=NULL):?><a href="<?= base_url();?>upload/<?= $d->bukti;?>"><i class="fa fa-file"></i></a><?php endif; ?></td>
            <td> <?php if($d->status==0):?><span class="badge badge-danger">Menunggu Konfirmasi</span><?php endif; ?>
 
            <?php if($d->status==1):?><span class="badge badge-warning">Menunggu Pembayaran</span><?php endif; ?>
@@ -116,6 +116,53 @@ echo form_open_multipart('user/bayar'); ?>
 </div>
 </div>
 </div>
+<!-- Payment Method Section -->
+<section class="payment-method-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Metode Pembayaran</h2>
+                <p>Pilih Metode Pembayaran Yang Anda Inginkan :</p>
+                <ul>
+                    <li>
+                        <i class="fas fa-university"></i> <!-- BCA Icon -->
+                        <strong>BCA:</strong> 1234-5678-9012
+                    </li>
+                    <li>
+                        <i class="fas fa-university"></i> <!-- BRI Icon -->
+                        <strong>BRI:</strong> 9876-5432-1098
+                    </li>
+                    <li>
+                        <i class="fas fa-university"></i> <!-- Mandiri Icon -->
+                        <strong>Mandiri:</strong> 6543-2109-8765
+                    </li>
+                    <li>
+                        <i class="fas fa-university"></i> <!-- BNI Icon -->
+                        <strong>BNI:</strong> 8765-4321-0987
+                    </li>
+                    <li>
+                        <i class="fas fa-credit-card"></i> <!-- OVO Icon -->
+                        <strong>OVO:</strong> @your_ovo_account
+                    </li>
+                    <li>
+                        <i class="fas fa-credit-card"></i> <!-- OVO Icon -->
+                        <strong>Dana:</strong> @your_ovo_account
+                    </li>
+                    <li>
+                        <i class="fas fa-credit-card"></i> <!-- OVO Icon -->
+                        <strong>ShopeePay:</strong> @your_ovo_account
+                    </li>
+                    <i class="fas fa-money-bill-wave"></i> <!-- Cash Icon -->
+                        <strong>Cash:</strong> Bayar Tunai Di Konter Untuk Mendapat Struk
+                    </li>
+
+              
+                    <!-- Add more payment methods as needed -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
 <script>
 $(document).ready(function() {

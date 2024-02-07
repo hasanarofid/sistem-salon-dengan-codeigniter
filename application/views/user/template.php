@@ -14,7 +14,7 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Booking Salon</title>
+		<title>KITALASHES</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -46,7 +46,7 @@
                       <nav id="nav-menu-container">
                         <ul class="nav-menu">
                           <li><a href="<?= base_url('user');?>">Home</a></li>
-                          <li><a href="<?= base_url('user/about');?>">Tentang Kami</a></li>
+                          <li><a href="<?= base_url('user/about');?>">About Us</a></li>
                           <li><a href="<?= base_url('user/gallery');?>">Gallery</a></li>
                           <li><a href="<?= base_url('user/service');?>">Layanan Kami</a></li>
                           <li><a href="<?= base_url('user/pesanan');?>">Pesanan Saya</a></li>

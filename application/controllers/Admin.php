@@ -17,7 +17,7 @@ class Admin extends CI_Controller
     {
         $config['encrypt_name'] = TRUE;
         $config['upload_path'] = 'upload';
-        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['allowed_types'] = 'jpg|png|jpeg|pdf';
         $config['overwrite'] = false;
         $config['max_size'] = 3000;
 
@@ -26,6 +26,26 @@ class Admin extends CI_Controller
         $this->upload->initialize($config);
 
         if ($this->upload->do_upload('file')) {
+            return $this->upload->data("file_name");
+        }
+        $error = $this->upload->display_errors();
+        echo $error;
+        exit;
+
+    }
+     public function uploadBukti()
+    {
+        $config['encrypt_name'] = TRUE;
+        $config['upload_path'] = 'upload';
+        $config['allowed_types'] = 'jpg|png|jpeg|pdf';
+        $config['overwrite'] = false;
+        $config['max_size'] = 3000;
+
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('bukti')) {
             return $this->upload->data("file_name");
         }
         $error = $this->upload->display_errors();
@@ -52,8 +72,63 @@ function transaksi()
         $data = array(
             'judul' => 'Transaksi',
             'dt_transaksi' => $this->m_umum->get_transaksi(),
+            'dt_pelanggan' => $this->m_umum->get_data('pelanggan'),
+            'dt_service' => $this->m_umum->get_data('service'),
         );
         $this->template->load('admin/template', 'admin/transaksi', $data);
+    }
+    function simpan_transaksi()
+    {
+         $tgl_booking = $this->input->post('tgl_booking');
+      
+ $kode_unik = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
+           $tgl = date('d');
+        $bln = date('m');
+        $thn = date('Y');
+        $jam = date('h');
+        $hariini = date('Y-m-d');
+        $menitdetik = date('is');
+
+   $no_transaksi = 'BS'.$tgl.$jam.$kode_unik.$thn.$menitdetik.$bln;
+     $detail = $this->m_umum->get_booking($tgl_booking);
+        if ($detail->num_rows() > 20) {
+            $notif = "Penuh di hari tersebut";
+            $this->session->set_flashdata('delete', $notif);
+            redirect('admin/transaksi');
+        }
+        else
+        {
+        $this->db->set('id_transaksi', 'UUID()', FALSE);
+        $this->db->set('no_transaksi',$no_transaksi);
+        $this->db->set('tgl_transaksi',$hariini);
+        $this->db->set('status',1);
+        $this->form_validation->set_rules('tgl_booking', 'tgl_booking', 'required');
+        if ($this->form_validation->run() === FALSE)
+            redirect('admin/transaksi');
+        else {
+
+            $this->m_umum->set_data("transaksi");
+            $notif = "Tambah Data Berhasil";
+            $this->session->set_flashdata('success', $notif);
+            redirect('admin/transaksi');
+        }
+    }
+    }
+      function bayar()
+    {
+        $id_transaksi = $this->input->post('id_transaksi');
+       
+                  $file = $this->uploadBukti();
+               
+        $data_update = array(
+            'bukti' => $file
+        );
+        $where = array('id_transaksi' => $id_transaksi);
+        $res = $this->m_umum->UpdateData('transaksi', $data_update, $where);
+            $notif = "Bukti Pembayaran berhasil di upload";
+            $this->session->set_flashdata('success', $notif);
+            redirect('admin/transaksi');
+
     }
 function update_transaksi()
     {
@@ -68,6 +143,14 @@ function update_transaksi()
             $this->session->set_flashdata('update', $notif);
             redirect('admin/transaksi');
         }
+    }
+     function delete_transaksi($id)
+    {
+
+        $this->m_umum->hapus('transaksi', 'id_transaksi', $id);
+        $notif = " Data Berhasil dihapuskan";
+        $this->session->set_flashdata('delete', $notif);
+        redirect('admin/transaksi');
     }
     function pesan()
     {

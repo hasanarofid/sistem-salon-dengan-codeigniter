@@ -114,6 +114,7 @@ class User extends CI_Controller
 
  function booking()
     {
+      $tgl_booking = $this->input->post('tgl_booking');
  $kode_unik = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
            $tgl = date('d');
         $bln = date('m');
@@ -123,6 +124,13 @@ class User extends CI_Controller
         $menitdetik = date('is');
 
    $no_transaksi = 'BS'.$tgl.$jam.$kode_unik.$thn.$menitdetik.$bln;
+    $detail = $this->m_umum->get_booking($tgl_booking);
+        if ($detail->num_rows() > 20) {
+            $notif = "Penuh di hari tersebut";
+            $this->session->set_flashdata('delete', $notif);
+            redirect('admin/transaksi');
+        }
+        else {
    $id_pelanggan=$this->session->userdata('id_pelanggan'); 
         $this->db->set('id_transaksi', 'UUID()', FALSE);
         $this->db->set('no_transaksi',$no_transaksi);
@@ -139,5 +147,6 @@ class User extends CI_Controller
             redirect('user/pesanan');
         }
     }
+  }
   
 }

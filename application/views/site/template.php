@@ -14,7 +14,7 @@
         <!-- meta character set -->
         <meta charset="UTF-8">
         <!-- Site Title -->
-        <title>Booking Salon</title>
+        <title>KITALASHES</title>
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
             <!--
@@ -62,11 +62,11 @@
                     <div class="row fullscreen align-items-center justify-content-between">
                         <div class="col-lg-6 col-md-6 banner-left">
                           
-                            <h1 class="text-white">Beauty Salon</h1>
+                            <h1 class="text-white">KITALASHES</h1>
                             <p class="text-white">
-                                Kami berikan pelayanan terbaik untuk anda
+                                Layanan Treatment Lengkap Dari Ujung Kepala Hingga Ujung Kaki
                             </p>
-                            <a href="<?= base_url('site/service'); ?>" class="primary-btn text-uppercase">Booking Sekarang</a>
+                            <a href="<?= base_url('site/service'); ?>" class="primary-btn text-uppercase">BOOKING NOW!</a>
                         </div>
                         
                     </div>
@@ -212,7 +212,7 @@ echo form_open('site/register'); ?>
 
                     <div class="row footer-bottom d-flex justify-content-between align-items-center">
                         <p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by xxxx
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by Ferdy&Briza
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         <div class="col-lg-4 col-sm-12 footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
