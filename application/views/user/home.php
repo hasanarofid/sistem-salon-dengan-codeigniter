@@ -83,7 +83,44 @@
 				</div>	
 			</section>
 			<!-- End price Area -->
-			
+			 <div class="modal fade" id="testimoni" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Testimoni</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <?php  
+echo validation_errors();                       
+echo form_open('user/kirim_testimoni'); ?>
+
+<!-- Modal body -->
+<div class="modal-body">
+<div class="mb-3">
+    <label for="exampleInputEmail1">Nama</label>
+    <input type="text" class="form-control"  name="nama_testimoni" required >
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1">Testimoni</label>
+    <textarea class="form-control" cols="5" name="ket"></textarea>
+    
+  </div>
+  <div class="modal-footer">
+
+<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+<input type="submit" name="submit"  class="btn btn-info btn-pill" value="Kirim">
+
+</div>
+</div>
+
+                 
+                  </form>
+                </div>
+              </div>
+            </div>
 
 			<!-- Start other-issue Area -->
 			<section class="other-issue-area section-gap">
@@ -129,6 +166,7 @@
 		                    <div class="title text-center">
 		                        <h1 class="mb-10">Testimoni Pelanggan Kami</h1>
 		                        <p>Apa kata pelanggan kami ?</p>
+		                        <a data-toggle="modal" data-target="#testimoni" href="#" class="primary-btn text-uppercase">Kirim Testimoni Anda</a>
 		                    </div>
 		                </div>
 		            </div>

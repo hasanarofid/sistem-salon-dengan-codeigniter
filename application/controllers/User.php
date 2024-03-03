@@ -111,6 +111,21 @@ class User extends CI_Controller
             redirect('user/pesanan');
 
     }
+     function kirim_testimoni()
+    {
+
+        $this->db->set('id_testimoni', 'UUID()', FALSE);
+        $this->form_validation->set_rules('nama_testimoni', 'nama_testimoni', 'required');
+        if ($this->form_validation->run() === FALSE)
+            redirect('user');
+        else {
+
+            $this->m_umum->set_data("testimoni");
+            $notif = "Data Berhasil dikirim";
+            $this->session->set_flashdata('success', $notif);
+            redirect('user');
+        }
+    }
 
  function booking()
     {
@@ -125,10 +140,10 @@ class User extends CI_Controller
 
    $no_transaksi = 'BS'.$tgl.$jam.$kode_unik.$thn.$menitdetik.$bln;
     $detail = $this->m_umum->get_booking($tgl_booking);
-        if ($detail->num_rows() > 20) {
+        if ($detail->num_rows() >= 20) {
             $notif = "Penuh di hari tersebut";
             $this->session->set_flashdata('delete', $notif);
-            redirect('admin/transaksi');
+            redirect('user/service');
         }
         else {
    $id_pelanggan=$this->session->userdata('id_pelanggan'); 

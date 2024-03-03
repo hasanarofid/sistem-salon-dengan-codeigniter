@@ -91,7 +91,7 @@ function transaksi()
 
    $no_transaksi = 'BS'.$tgl.$jam.$kode_unik.$thn.$menitdetik.$bln;
      $detail = $this->m_umum->get_booking($tgl_booking);
-        if ($detail->num_rows() > 20) {
+        if ($detail->num_rows() >= 20) {
             $notif = "Penuh di hari tersebut";
             $this->session->set_flashdata('delete', $notif);
             redirect('admin/transaksi');
