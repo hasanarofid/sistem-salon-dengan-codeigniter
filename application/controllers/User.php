@@ -130,7 +130,7 @@ class User extends CI_Controller
  function booking()
     {
       $tgl_booking = $this->input->post('tgl_booking');
- $kode_unik = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
+        $kode_unik = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
            $tgl = date('d');
         $bln = date('m');
         $thn = date('Y');
@@ -163,5 +163,52 @@ class User extends CI_Controller
         }
     }
   }
+
+  // check slot
+  public function check_slot() {
+        if ($this->input->is_ajax_request()) {
+            $tanggal = $this->input->post('tanggal');
+            $jam = $this->input->post('jam');
+            // var_dump($tanggal);
+            $detail = $this->m_umum->get_booking_slot($tanggal,$jam);
+            $data = array();
+            if($jam == '17'){
+                if($detail->num_rows() >= 2){
+                    $tersedia = false;
+                    $batas_slot = 2;
+                    $slot_tersedia = 0;
+                    $keterangan = 'Slot sudah  penuh';
+                }else{
+                    $tersedia = true;
+                    $batas_slot = 2;
+                    $slot_tersedia = 2 -$detail->num_rows() ;
+                    $keterangan = 'Slot tersedia';
+                }
+            }else{
+                if($detail->num_rows() >= 3){
+                    $tersedia = false;
+                    $batas_slot = 3;
+                    $slot_tersedia = 0;
+                    $keterangan = 'Slot sudah  penuh';
+                }else{
+                    $batas_slot = 3;
+                    $tersedia = true;
+                    $slot_tersedia = 3 -$detail->num_rows() ;
+                    $keterangan = 'Slot tersedia';
+                }
+
+            }
+            $data = array(
+                'tersedia'=>$tersedia,
+                'batas_slot'=>$batas_slot,
+                'slot_tersedia'=>$slot_tersedia,
+                'keterangan'=>$keterangan,
+            );
+
+            echo json_encode($data);
+        } else {
+            show_404(); // Tampilkan error 404 jika bukan permintaan AJAX
+        }
+    }
   
 }

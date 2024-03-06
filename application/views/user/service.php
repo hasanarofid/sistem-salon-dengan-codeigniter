@@ -90,16 +90,36 @@ echo form_open('user/booking'); ?>
   <div class="mb-3">
 
     <label for="exampleInputEmail1">Tanggal Booking</label>
-    <input type="date" class="form-control"  name="tgl_booking" required >
+    <input type="date" class="form-control" id="inputTanggal"  name="tgl_booking" required >
     
   </div>
+  <div class="mb-3">
+
+	<label for="exampleInputEmail1">Jam Booking</label>
+	<div class="form-group">
+		<a href="#" onclick="checkSlot(10)" class="btn-info btn-sm jam">10:00</a>
+		<a href="#" onclick="checkSlot(11)" class="btn-info btn-sm jam">11:00</a>
+		<a href="#" onclick="checkSlot(13)" class="btn-info btn-sm jam">13:00</a>
+		<a href="#" onclick="checkSlot(14)" class="btn-info btn-sm jam">14:00</a>
+		<a href="#" onclick="checkSlot(15)" class="btn-info btn-sm jam">15:00</a>
+		<a href="#" onclick="checkSlot(16)" class="btn-info btn-sm jam">16:00</a>
+		<a href="#" onclick="checkSlot(17)" class="btn-info btn-sm jam">17:00</a>
+
+		<input type="text" id="jam" name="jam">
+	</div>
+
+
+	</div>
+	<div class="mb-3">
+		<p id="keterangan_slot"></p>
+	</div>
 </div>
 
 <!-- Modal footer -->
 <div class="modal-footer">
 
-<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-<input type="submit" name="submit"  class="btn btn-info btn-pill" value="Submit">
+<button type="button"  class="btn btn-danger" data-dismiss="modal">Close</button>
+<input type="submit" id="submit_booking" disable name="submit"  class="btn btn-info btn-pill" value="Submit">
 
 </div>
 </form>
@@ -110,6 +130,8 @@ echo form_open('user/booking'); ?>
 <script>
 $(document).ready(function() {
 
+	
+
 $('#edit').on('show.bs.modal', function (event) {
 var div = $(event.relatedTarget)
 var modal   = $(this)
@@ -118,4 +140,40 @@ modal.find('#nama_service').attr("value",div.data('nama_service'));
 
 });
 });
+
+
+function checkSlot(jam){
+	var tanggalBooking = $("#inputTanggal").val();
+    if (!tanggalBooking) {
+			alert('Pilih Tanggal Booking terlebih dahulu');
+			$("#tgl_booking").focus();
+		} else {
+			$.ajax({
+            url: "check_slot", // Ubah sesuai dengan URL controller Anda
+            type: "POST",
+            data: {
+                tanggal: tanggalBooking,
+                jam: jam
+            },
+				success: function(response) {
+					var data = JSON.parse(response); // Mengubah respons JSON menjadi objek JavaScript
+						console.log(data); // Menampilkan data dari controller
+						// Lakukan tindakan sesuai dengan respons
+						if(data.tersedia) {
+							console.log('Slot tersedia');
+							console.log('Batas slot:', data.batas_slot);
+							console.log('Slot tersedia:', data.slot_tersedia);
+							console.log('Keterangan:', data.keterangan);
+						} else {
+							console.log('Slot tidak tersedia');
+							console.log('Keterangan:', data.keterangan);
+						}
+				},
+				error: function(xhr, status, error) {
+					console.error(xhr.responseText);
+					// Tangani kesalahan jika terjadi
+				}
+			});
+		}
+}
 </script>
