@@ -192,8 +192,8 @@ $this->db->limit(3);
 		return $query->result();
 	}
 	
-	function get_booking_slot($tgl,$jam){
-		$query=$this->db->query("select * from transaksi where tgl_booking='$tgl' AND jam='$jam' ");
+	function get_booking_slot($tgl,$jam,$id_service){
+		$query=$this->db->query("select * from transaksi where tgl_booking='$tgl' AND jam='$jam' AND id_service='$id_service' ");
 		return $query;
 	}
 }

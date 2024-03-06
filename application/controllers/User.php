@@ -130,6 +130,7 @@ class User extends CI_Controller
  function booking()
     {
       $tgl_booking = $this->input->post('tgl_booking');
+      $jam = $this->input->post('jam');
         $kode_unik = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
            $tgl = date('d');
         $bln = date('m');
@@ -151,6 +152,7 @@ class User extends CI_Controller
         $this->db->set('no_transaksi',$no_transaksi);
         $this->db->set('id_pelanggan',$id_pelanggan);
         $this->db->set('tgl_transaksi',$hariini);
+        $this->db->set('jam',$jam);
         $this->form_validation->set_rules('tgl_booking', 'tgl_booking', 'required');
         if ($this->form_validation->run() === FALSE)
             redirect('user/service');
@@ -169,8 +171,9 @@ class User extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $tanggal = $this->input->post('tanggal');
             $jam = $this->input->post('jam');
+            $id_service = $this->input->post('id_service');
             // var_dump($tanggal);
-            $detail = $this->m_umum->get_booking_slot($tanggal,$jam);
+            $detail = $this->m_umum->get_booking_slot($tanggal,$jam,$id_service);
             $data = array();
             if($jam == '17'){
                 if($detail->num_rows() >= 2){
@@ -182,7 +185,7 @@ class User extends CI_Controller
                     $tersedia = true;
                     $batas_slot = 2;
                     $slot_tersedia = 2 -$detail->num_rows() ;
-                    $keterangan = 'Slot tersedia';
+                    $keterangan = 'Slot tersedia. sisa slot '.$slot_tersedia;
                 }
             }else{
                 if($detail->num_rows() >= 3){
@@ -194,7 +197,7 @@ class User extends CI_Controller
                     $batas_slot = 3;
                     $tersedia = true;
                     $slot_tersedia = 3 -$detail->num_rows() ;
-                    $keterangan = 'Slot tersedia';
+                    $keterangan = 'Slot tersedia. sisa slot '.$slot_tersedia;
                 }
 
             }
