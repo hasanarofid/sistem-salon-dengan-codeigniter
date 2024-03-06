@@ -21,6 +21,7 @@
                 <th>No Pesanan</th>
                 <th>Tanggal Transaksi</th>
                 <th>Tanggal Booking</th>
+                <th>Jam</th>
                 <th>Nama Service</th>
                 <th>Biaya</th>
                 <th>Durasi</th>
@@ -42,6 +43,7 @@
                   <td><?= $d->no_transaksi; ?></td>
                   <td><?= $d->tgl_transaksi; ?></td>
                   <td><?= $d->tgl_booking; ?></td>
+                  <td><?= $d->jam; ?></td>
                   <td><?= $d->nama_service; ?></td>
                   <td><?= $d->biaya; ?></td>
                   <td><?= $d->durasi; ?></td>
@@ -143,7 +145,7 @@ href="<?php echo base_url('admin/delete_transaksi/'.$d->id_transaksi);?>"
 
 
 <?php
-
+// var_dump("totalnya ".count($dt_service));die;
   foreach ($dt_transaksi as $f) : ?>
 
     <div class="modal" id="modaledit<?= $f->id_transaksi; ?>" aria-hidden="true">
@@ -161,7 +163,7 @@ href="<?php echo base_url('admin/delete_transaksi/'.$d->id_transaksi);?>"
 
           <!-- Modal body -->
           <div class="modal-body">
-            <input type="hidden" class="form-control" value="<?= $f->id_transaksi; ?>" name="id_transaksi" required>
+            <input type="hidden" class="form-control" value="<?= $f->id_transaksi; ?>" id="id" name="id_transaksi" required>
              <div class="mb-3">
             <label for="exampleInputEmail1">Service</label>
 
@@ -177,7 +179,7 @@ href="<?php echo base_url('admin/delete_transaksi/'.$d->id_transaksi);?>"
           </div>
  <div class="mb-3">
             <label for="exampleInputEmail1">Tanggal Booking</label>
-            <input type="date" class="form-control" name="tgl_booking" value="<?= $f->tgl_booking; ?>" required>
+            <input type="date" id="inputTanggal" class="form-control" name="tgl_booking" value="<?= $f->tgl_booking; ?>" required>
 
           </div>
 <div class="mb-3">
@@ -207,8 +209,62 @@ href="<?php echo base_url('admin/delete_transaksi/'.$d->id_transaksi);?>"
 
             </div>
             
+<?php
+if($f->jam == '17'){
+  if(count($dt_service) >= 2){
+      $tersedia = false;
+      $batas_slot = 2;
+      $slot_tersedia = 0;
+      $keterangan = 'Slot sudah  penuh';
+  }else{
+      $tersedia = true;
+      $batas_slot = 2;
+      $slot_tersedia = 2 -count($dt_service) ;
+      $keterangan = 'Slot tersedia. sisa slot '.$slot_tersedia;
+  }
+}else{
+  if(count($dt_service) >= 3){
+      $tersedia = false;
+      $batas_slot = 3;
+      $slot_tersedia = 0;
+      $keterangan = 'Slot sudah  penuh';
+  }else{
+      $batas_slot = 3;
+      $tersedia = true;
+      $slot_tersedia = 3 -count($dt_service) ;
+      $keterangan = 'Slot tersedia. sisa slot '.$slot_tersedia;
+  }
 
-         
+}
+?>
+            <div class="mb-3">
+
+<label for="exampleInputEmail1">Jam Booking</label>
+<div class="form-group">
+  <a href="#" onclick="checkSlot(10)" class="<?php echo
+  ($f->jam == 10) ? 'btn-success' : 'btn-info' ?>
+  btn-sm jam" id="btn-10">10:00</a>
+  <a href="#" onclick="checkSlot(11)" class="<?php echo
+  ($f->jam == 11) ? 'btn-success' : 'btn-info' ?> btn-sm jam" id="btn-11">11:00</a>
+  <a href="#" onclick="checkSlot(13)" class="<?php echo
+  ($f->jam == 13) ? 'btn-success' : 'btn-info' ?> btn-sm jam" id="btn-13">13:00</a>
+  <a href="#" onclick="checkSlot(14)" class="<?php echo
+  ($f->jam == 14) ? 'btn-success' : 'btn-info' ?> btn-sm jam" id="btn-14">14:00</a>
+  <a href="#" onclick="checkSlot(15)" class="<?php echo
+  ($f->jam == 15) ? 'btn-success' : 'btn-info' ?> btn-sm jam" id="btn-15">15:00</a>
+  <a href="#" onclick="checkSlot(16)" class="<?php echo
+  ($f->jam == 16) ? 'btn-success' : 'btn-info' ?> btn-sm jam" id="btn-16">16:00</a>
+  <a href="#" onclick="checkSlot(17)" class="<?php echo
+  ($f->jam == 17) ? 'btn-success' : 'btn-info' ?> btn-sm jam" id="btn-17">17:00</a>
+
+  <input type="hidden" id="jam_edit" name="jam" value="<?= $f->jam ?>">
+</div>
+
+
+</div>
+<div class="mb-3">
+  <p id="keterangan_slot"><?php $keterangan ?></p>
+</div>
          
             
 
@@ -277,5 +333,53 @@ modal.find('#id').attr("value",div.data('id'));
 modal.find('#no_transaksi').attr("value",div.data('no_transaksi'));
 
 });
+
+
+
 });
+
+function checkSlot(jam){
+  // console.log(jam);
+	$(".jam").removeClass("btn-success").addClass("btn-info");
+	var tanggalBooking = $("#inputTanggal").val();
+    if (!tanggalBooking) {
+			alert('Pilih Tanggal Booking terlebih dahulu');
+			$("#tgl_booking").focus();
+		} else {
+      console.log(jam);
+			$("#btn-" + jam).removeClass("btn-info").addClass("btn-success");
+			$("#jam_edit").val(jam);
+			$.ajax({
+            url: "check_slot", // Ubah sesuai dengan URL controller Anda
+            type: "POST",
+            data: {
+                tanggal: tanggalBooking,
+                jam: jam,
+				id_service : $("#id").val()
+            },
+				success: function(response) {
+					var data = JSON.parse(response); // Mengubah respons JSON menjadi objek JavaScript
+						console.log(data); // Menampilkan data dari controller
+						// Lakukan tindakan sesuai dengan respons
+						if(data.tersedia) {
+							$("#keterangan_slot").text(data.keterangan);
+							console.log('Slot tersedia');
+							console.log('Batas slot:', data.batas_slot);
+							console.log('Slot tersedia:', data.slot_tersedia);
+							console.log('Keterangan:', data.keterangan);
+							// document.getElementById("submit_booking").disabled = false;
+
+						} else {
+							$("#keterangan_slot").text(data.keterangan);
+							console.log('Slot tidak tersedia');
+							console.log('Keterangan:', data.keterangan);
+						}
+				},
+				error: function(xhr, status, error) {
+					console.error(xhr.responseText);
+					// Tangani kesalahan jika terjadi
+				}
+			});
+		}
+}
 </script>

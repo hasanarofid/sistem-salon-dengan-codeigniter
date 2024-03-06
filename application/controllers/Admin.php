@@ -530,5 +530,53 @@ function gallery()
         );
         $this->load->view('laporan/service',$data);
     }
-  
+ 
+    
+      // check slot
+  public function check_slot() {
+    if ($this->input->is_ajax_request()) {
+        $tanggal = $this->input->post('tanggal');
+        $jam = $this->input->post('jam');
+        $id_service = $this->input->post('id_service');
+        // var_dump($tanggal);
+        $detail = $this->m_umum->get_booking_slot($tanggal,$jam,$id_service);
+        $data = array();
+        if($jam == '17'){
+            if($detail->num_rows() >= 2){
+                $tersedia = false;
+                $batas_slot = 2;
+                $slot_tersedia = 0;
+                $keterangan = 'Slot sudah  penuh';
+            }else{
+                $tersedia = true;
+                $batas_slot = 2;
+                $slot_tersedia = 2 -$detail->num_rows() ;
+                $keterangan = 'Slot tersedia. sisa slot '.$slot_tersedia;
+            }
+        }else{
+            if($detail->num_rows() >= 3){
+                $tersedia = false;
+                $batas_slot = 3;
+                $slot_tersedia = 0;
+                $keterangan = 'Slot sudah  penuh';
+            }else{
+                $batas_slot = 3;
+                $tersedia = true;
+                $slot_tersedia = 3 -$detail->num_rows() ;
+                $keterangan = 'Slot tersedia. sisa slot '.$slot_tersedia;
+            }
+
+        }
+        $data = array(
+            'tersedia'=>$tersedia,
+            'batas_slot'=>$batas_slot,
+            'slot_tersedia'=>$slot_tersedia,
+            'keterangan'=>$keterangan,
+        );
+
+        echo json_encode($data);
+    } else {
+        show_404(); // Tampilkan error 404 jika bukan permintaan AJAX
+    }
+}
 }

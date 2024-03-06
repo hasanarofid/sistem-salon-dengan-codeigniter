@@ -24,6 +24,7 @@
                 <th>No Pesanan</th>
                 <th>Tanggal Transaksi</th>
                 <th>Tanggal Booking</th>
+                <th>Jam</th>
                 <th>Nama Service</th>
                 <th>Biaya</th>
                 <th>Durasi</th>
@@ -45,6 +46,7 @@
                   <td><?= $d->no_transaksi; ?></td>
                   <td><?= $d->tgl_transaksi; ?></td>
                   <td><?= $d->tgl_booking; ?></td>
+                  <td><?= $d->jam; ?></td>
                   <td><?= $d->nama_service; ?></td>
                   <td><?= $d->biaya; ?></td>
                   <td><?= $d->durasi; ?></td>
