@@ -43,7 +43,7 @@
                   <td><?= $d->no_transaksi; ?></td>
                   <td><?= $d->tgl_transaksi; ?></td>
                   <td><?= $d->tgl_booking; ?></td>
-                  <td><?= $d->jam; ?></td>
+                  <td><?= $d->jam.':00'; ?></td>
                   <td><?= $d->nama_service; ?></td>
                   <td><?= $d->biaya; ?></td>
                   <td><?= $d->durasi; ?></td>
